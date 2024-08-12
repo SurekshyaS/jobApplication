@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .job-description {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group-inline .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group-inline .form-group:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="job-description">
+    <h1>Job Title: Frontend Developer</h1>
+    <p>We are looking for a skilled Frontend Developer to join our team. The ideal candidate will have experience with React, JavaScript, and CSS. You will be responsible for developing and maintaining web applications, collaborating with designers and backend developers, and ensuring the technical feasibility of UI/UX designs.</p>
+</div>
+<form th:action="@{/api/job-applications}" th:object="${jobApplicationRequestDto}" method="post">
+    <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" th:field="*{fullName}" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" th:field="*{phone}" required>
+    </div>
+    <div class="form-group">
+        <label for="position">Position Applied For</label>
+        <input type="text" id="position" th:field="*{position}" required>
+    </div>
+    <div class="form-group">
+        <label for="experience">Years of Experience</label>
+        <input type="number" id="experience" th:field="*{experience}" required>
+    </div>
+    <div class="form-group">
+        <label for="education">Highest Level of Education</label>
+        <select id="education" th:field="*{education}" required>
+            <option value="high-school">High School</option>
+            <option value="associate">Associate Degree</option>
+            <option value="bachelor">Bachelor's Degree</option>
+            <option value="master">Master's Degree</option>
+            <option value="doctorate">Doctorate</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="portfolio">Portfolio URL</label>
+        <input type="url" id="portfolio" th:field="*{portfolio}">
+    </div>
+    <div class="form-group">
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" th:field="*{resume}" required>
+    </div>
+    <div class="form-group">
+        <label>Are you willing to relocate?</label>
+        <div>
+            <input type="radio" id="relocate-yes" th:field="*{relocate}" value="yes" required>
+            <label for="relocate-yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="relocate-no" th:field="*{relocate}" value="no" required>
+            <label for="relocate-no">No</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="skills">Skills</label>
+        <textarea id="skills" th:field="*{skills}" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="availability">Availability to Start</label>
+        <input type="date" id="availability" th:field="*{availability}" required>
+    </div>
+    <div class="form-group">
+        <label for="addressLine1">Address Line 1</label>
+        <input type="text" id="addressLine1" th:field="*{address.addressLine1}" required>
+    </div>
+    <div class="form-group">
+        <label for="addressLine2">Address Line 2</label>
+        <input type="text" id="addressLine2" th:field="*{address.addressLine2}">
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" th:field="*{address.city}" required>
+    </div>
+    <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" id="state" th:field="*{address.state}" required>
+    </div>
+    <div class="form-group">
+        <label for="zipCode">Zip Code</label>
+        <input type="text" id="zipCode" th:field="*{address.zipCode}" required>
+    </div>
+    <div class="form-group">
+        <button type="submit">Submit Application</button>
+    </div>
+</form>
+</body>
+</html>
