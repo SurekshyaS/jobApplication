@@ -1,7 +1,6 @@
 package com.surekshya.jobApplication.service;
 
-import com.surekshya.jobApplication.dto.request.ApplicationRequest;
-import com.surekshya.jobApplication.entity.Address;
+import com.surekshya.jobApplication.dto.request.ApplicationRequestDto;
 import com.surekshya.jobApplication.entity.Applicant;
 import com.surekshya.jobApplication.repository.AddressRepository;
 import com.surekshya.jobApplication.repository.ApplicantRepository;
@@ -16,13 +15,13 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class JobApplicationService {
+public class ApplicationService {
     private final AddressRepository addressRepository;
     private final ApplicantRepository applicantRepository;
 
 
 
-    public Applicant saveJobApplicant(ApplicationRequest jobApplicationRequest) {
+    public Applicant saveJobApplicant(ApplicationRequestDto jobApplicationRequest) {
 //        ValidateApplicant(jobApplicationRequest);Address address = addressRequestToAddressConverter.convert(jobApplicationRequest.getJobApplicationRequest);
       Applicant applicant = ApplicantUtils.convertRequestToApplicant(jobApplicationRequest);
 
@@ -34,4 +33,5 @@ public class JobApplicationService {
     public List<Applicant> getApplicantByState(String state) {
         return applicantRepository.findApplicantsByState(state);
     }
+
 }

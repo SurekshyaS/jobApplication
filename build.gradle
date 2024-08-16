@@ -29,6 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 //	implementation 'org.springframework:spring-core:5:3.21'
 //	implementation 'org.springframework:spring-context:5.3.21'
+	//thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	//postgres
 	implementation 'org.postgresql:postgresql:42.7.2'
 	//lombok

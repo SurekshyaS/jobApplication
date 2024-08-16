@@ -1,10 +1,11 @@
 package com.surekshya.jobApplication.controller;
 
-import com.surekshya.jobApplication.dto.request.ApplicationRequest;
+import com.surekshya.jobApplication.dto.request.ApplicationRequestDto;
 import com.surekshya.jobApplication.entity.Applicant;
 import com.surekshya.jobApplication.repository.ApplicantRepository;
-import com.surekshya.jobApplication.service.JobApplicationService;
+import com.surekshya.jobApplication.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +16,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JobApplicationController {
 
-    private final JobApplicationService service;
+    private final ApplicationService service;
     private final ApplicantRepository applicantRepository;
 
     @PostMapping("/saveApplicant")
-    public Applicant submitApplication(@RequestBody ApplicationRequest jobApplicantRequest) {
+    public Applicant submitApplication(@RequestBody ApplicationRequestDto jobApplicantRequest) {
         return service.saveJobApplicant(jobApplicantRequest);
     }
 
@@ -34,6 +35,14 @@ public class JobApplicationController {
         return service.getApplicantByState(state);
 
     }
+//
+//    @GetMapping("/")
+//    public String index(Model model) {
+//        model.addAttribute("name", "User");
+//        return "index";
+//    }
+
+
 
 
 }

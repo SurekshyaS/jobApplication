@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body align="center">
+
+<div class="job-description">
+    <h1>Job Title: Software Engineer</h1>
+    <p>We are looking for a skilled Software Engineer to join our team. The ideal candidate will have experience with React, JavaScript, and CSS. You will be responsible for developing and maintaining web applications, collaborating with designers and backend developers, and ensuring the technical feasibility of UI/UX designs.</p>
+</div>
+
+<form th:action="@{/webJobApplications}" th:object="${jobApplicationForm}" method="post">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" th:field="*{firstName}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" th:field="*{lastName}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" th:field="*{phoneNumber}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="position">Position Applied For</label>
+        <input type="text" id="position" th:field="*{jobName}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="education">Highest Level of Education</label>
+        <select id="education" th:field="*{education}" required>
+            <option value="high-school">High School</option>
+            <option value="associate">Associate Degree</option>
+            <option value="bachelor">Bachelor's Degree</option>
+            <option value="master">Master's Degree</option>
+            <option value="doctorate">Doctorate</option>
+        </select>
+    </div>
+
+<!--    <div class="form-group">-->
+<!--        <label>Are you willing to relocate?</label>-->
+<!--        <div>-->
+<!--            <input type="radio" id="relocate-yes" th:field="*{relocate}" value="yes" required>-->
+<!--            <label for="relocate-yes">Yes</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <input type="radio" id="relocate-no" th:field="*{relocate}" value="no" required>-->
+<!--            <label for="relocate-no">No</label>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="form-group">
+        <label for="availability">Availability to Start</label>
+        <input type="date" id="availability" th:field="*{availability}" required>
+    </div>
+
+     Address Fields
+    <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" id="street" th:field="*{addressRequest.street}" required>
+
+        <label for="city">City</label>
+        <input type="text" id="city" th:field="*{addressRequest.city}" required>
+
+        <label for="state">State</label>
+        <input type="text" id="state" th:field="*{addressRequest.state}" required>
+
+        <label for="zipCode">Zip Code</label>
+        <input type="text" id="zipCode" th:field="*{addressRequest.zipCode}" required>
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Submit Application</button>
+    </div>
+</form>
+
+<div>
+    <h1>List of Applied Candidates</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>JobTitle</th>
+            <th>Availability</th>
+            <th>Education</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="applicant : ${tableViewOfApplicant}">
+            <td th:text="${applicant.firstName}"></td>
+            <td th:text="${applicant.lastName}"></td>
+            <td th:text="${applicant.email}"></td>
+            <td th:text="${applicant.phoneNumber}"></td>
+            <td th:text="${applicant.jobName}"></td>
+            <td th:text="${applicant.availability}"></td>
+            <td th:text="${applicant.education}"></td>
+            <td th:text="${applicant.address.street}"></td>
+            <td th:text="${applicant.address.city}"></td>
+            <td th:text="${applicant.address.state}"></td>
+            <td th:text="${applicant.address.zipCode}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<databaseChangeLog>
+    <changeSet id="fullNameToFirstName" author="surekshyasharma@gmail.com">
+        <sqlFile path="changelog/fullNameToFirstName_ddl.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>

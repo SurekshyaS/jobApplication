@@ -1,7 +1,6 @@
 package com.surekshya.jobApplication.utils;
 
-import com.surekshya.jobApplication.dto.request.AddressRequest;
-import com.surekshya.jobApplication.dto.request.ApplicationRequest;
+import com.surekshya.jobApplication.dto.request.ApplicationRequestDto;
 import com.surekshya.jobApplication.entity.Address;
 import com.surekshya.jobApplication.entity.Applicant;
 import lombok.Data;
@@ -17,10 +16,10 @@ public class ApplicantUtils {
         return value == null ? "" : value;
     }
 
-    public static Applicant convertRequestToApplicant(ApplicationRequest request) {
+    public static Applicant convertRequestToApplicant(ApplicationRequestDto request) {
 
         Applicant newApplicant = new Applicant();
-        newApplicant.setFullName(request.getFirstName());
+        newApplicant.setFirstName(request.getFirstName());
         newApplicant.setLastName(request.getLastName());
         newApplicant.setEmail(request.getEmail());
         newApplicant.setAvailability(request.getAvailability());
