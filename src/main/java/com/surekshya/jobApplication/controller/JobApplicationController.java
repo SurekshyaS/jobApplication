@@ -2,6 +2,7 @@ package com.surekshya.jobApplication.controller;
 
 import com.surekshya.jobApplication.dto.request.ApplicationRequestDto;
 import com.surekshya.jobApplication.entity.Applicant;
+import com.surekshya.jobApplication.repository.AddressRepository;
 import com.surekshya.jobApplication.repository.ApplicantRepository;
 import com.surekshya.jobApplication.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -18,6 +20,7 @@ public class JobApplicationController {
 
     private final ApplicationService service;
     private final ApplicantRepository applicantRepository;
+    private final AddressRepository addressRepository;
 
     @PostMapping("/saveApplicant")
     public Applicant submitApplication(@RequestBody ApplicationRequestDto jobApplicantRequest) {
@@ -35,12 +38,11 @@ public class JobApplicationController {
         return service.getApplicantByState(state);
 
     }
-//
-//    @GetMapping("/")
-//    public String index(Model model) {
-//        model.addAttribute("name", "User");
-//        return "index";
-//    }
+
+    @GetMapping("/applicantCountMap")
+    public Map<String, Long> getApplicantCountMap() {
+        return service.getApplicantsCountByStateMap();
+    }
 
 
 

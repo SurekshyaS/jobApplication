@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Form</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body align="center">
 
@@ -64,10 +65,9 @@
 
     <div class="form-group">
         <label for="availability">Availability to Start</label>
-        <input type="date" id="availability" th:field="*{availability}" required>
+        <input type="date" id="availability" th:field="*{availability}">
     </div>
 
-     Address Fields
     <div class="form-group">
         <label for="street">Street</label>
         <input type="text" id="street" th:field="*{addressRequest.street}" required>
@@ -87,41 +87,6 @@
     </div>
 </form>
 
-<div>
-    <h1>List of Applied Candidates</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Email</th>
-            <th>PhoneNumber</th>
-            <th>JobTitle</th>
-            <th>Availability</th>
-            <th>Education</th>
-            <th>Street</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip Code</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="applicant : ${tableViewOfApplicant}">
-            <td th:text="${applicant.firstName}"></td>
-            <td th:text="${applicant.lastName}"></td>
-            <td th:text="${applicant.email}"></td>
-            <td th:text="${applicant.phoneNumber}"></td>
-            <td th:text="${applicant.jobName}"></td>
-            <td th:text="${applicant.availability}"></td>
-            <td th:text="${applicant.education}"></td>
-            <td th:text="${applicant.address.street}"></td>
-            <td th:text="${applicant.address.city}"></td>
-            <td th:text="${applicant.address.state}"></td>
-            <td th:text="${applicant.address.zipCode}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/app.js" defer></script>
+</head>
+<body>
+<div>Thank you for submitting the application.</div>
+<div>
+    <h1>List of Applied Candidates</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>JobTitle</th>
+            <th>Availability</th>
+            <th>Education</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="applicant : ${tableViewOfApplicant}">
+            <td th:text="${applicant.firstName}"></td>
+            <td th:text="${applicant.lastName}"></td>
+            <td th:text="${applicant.email}"></td>
+            <td th:text="${applicant.phoneNumber}"></td>
+            <td th:text="${applicant.jobName}"></td>
+            <td th:text="${applicant.availability}"></td>
+            <td th:text="${applicant.education}"></td>
+            <td th:text="${applicant.address.street}"></td>
+            <td th:text="${applicant.address.city}"></td>
+            <td th:text="${applicant.address.state}"></td>
+            <td th:text="${applicant.address.zipCode}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+<h4>Applicant Counts by State</h4>
+<table>
+    <thead>
+    <tr>
+        <th>State</th>
+        <th>Applicant Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${applicantsByStateMap}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+</body>
+</html>

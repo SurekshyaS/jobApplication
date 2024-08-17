@@ -1,5 +1,6 @@
 package com.surekshya.jobApplication.repository;
 
+import com.surekshya.jobApplication.dto.response.ApplicantCountDto;
 import com.surekshya.jobApplication.entity.Applicant;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,5 +16,4 @@ public interface ApplicantRepository extends CrudRepository<Applicant, Integer>,
 
     @Query("SELECT a FROM Applicant a WHERE a.address.state = :state")
     List<Applicant> findApplicantsByState(@Param("state") String state);
-
 }
